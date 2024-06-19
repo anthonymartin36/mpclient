@@ -1,42 +1,86 @@
 {
-  "name": "mpclient",
-  "private": true,
-  "version": "0.0.0",
+  "homepage": "http://anthonymartin36.github.io/mpclient",
+  "name": "missing-purrson-client-boilerplate-fullstack-query",
   "type": "module",
+  "version": "2.0.0",
+  "main": "server/index.ts",
+  "license": "MIT",
+  "keywords": [
+    "fullstack"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "npm i && vite build --production=false",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "test": "vitest",
+    "start": "node server/index.ts",
+    "dev": "run-p dev:client dev:server",
+    "dev:client": "vite",
+    "dev:server": "tsx watch server/index.ts",
+    "build": "run-s build:client build:server",
+    "build:client": "vite build",
+    "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "knex": "knex --knexfile ./server/db/knexfile.js"
+  },
+  "eslintConfig": {
+    "extends": "@devacademy/eslint-config/react",
+    "ignorePatterns": [
+      "bundle.js"
+    ]
   },
   "dependencies": {
-    "react": "^18.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.17.2",
+    "knex": "^2.5.1",
     "react-dom": "^18.2.0",
-    "vite": "^5.2.0"
+    "react-icons": "^5.0.1",
+    "react-router-dom": "^6.23.1",
+    "react-widgets": "^5.8.4",
+    "sqlite3": "^5.1.6",
+    "superagent": "7.1.1"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "9.3.0",
+    "@devacademy/eslint-config": "^1.9.1",
+    "@reach/combobox": "^0.18.0",
+    "@react-google-maps/api": "^2.19.3",
+    "@redux-devtools/extension": "^3.2.3",
+    "@tanstack/eslint-plugin-query": "^4.29.9",
+    "@tanstack/react-query": "^4.36.1",
+    "@tanstack/react-query-devtools": "^4.36.1",
+    "@testing-library/react": "^14.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.14",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@types/superagent": "^4.1.18",
+    "@types/supertest": "^2.0.12",
+    "@vitejs/plugin-react": "^4.0.4",
+    "@vitest/coverage-c8": "^0.30.1",
+    "esbuild": "^0.18.19",
+    "eslint": "^8.10.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.6",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0"
+    "gh-pages": "^6.1.1",
+    "jsdom": "^22.1.0",
+    "npm-run-all": "^4.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1",
+    "sass": "^1.50.1",
+    "supertest": "^6.2.2",
+    "tsx": "^3.12.7",
+    "typescript": "^3.7.0",
+    "use-places-autocomplete": "^4.0.1",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.4"
   },
-  "overrides": {
-    "@typescript-eslint/eslint-plugin": {
-      "eslint": "$eslint",
-      "@humanwhocodes/object-schema": "@eslint/object-schema",
-      "@humanwhocodes/config-array": "@eslint/config-array"
-    },
-    "@typescript-eslint/parser": {
-      "eslint": "$eslint"
-    },
-    "eslint-plugin-react-hooks": {
-      "eslint": "$eslint"
-    }
-  }
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "browserslist": "> 2%, not dead"
 }
