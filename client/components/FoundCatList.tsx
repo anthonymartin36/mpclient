@@ -48,7 +48,7 @@ export default function FoundCatList() {
   const backgroundColour = 'none'
   const itemColour = '#030303'
   const borderColour = '#030303'
-  const getImageUrlsArray = (imageUrlString) => {
+  const getImageUrlsArray = (imageUrlString: String) => {
     if (!imageUrlString) return []
     return imageUrlString.split(',').map((url) => url.trim())
   }
@@ -117,7 +117,7 @@ export default function FoundCatList() {
                 <div key={cat.catId} className="cats-card">
                   <div className="cats-card__img">
                     <img
-                      src={getImageUrlsArray(cat.missingImageUrl)[0]}
+                      src={`../../${getImageUrlsArray(cat.missingImageUrl)[0]}`}
                       alt={cat.catName}
                       className="cats-card-img"
                     />
