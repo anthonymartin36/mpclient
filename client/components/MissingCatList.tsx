@@ -29,7 +29,7 @@ export default function MissingCatList() {
   if (isError) {
     return (
       <div className="loading">
-        <img src="client/images/catGif1.gif" alt="" />
+        <img src="../images/catGif1.gif" alt="" />
         <h1 className="loading-heading">Something's broken!</h1>
       </div>
     )
@@ -38,7 +38,7 @@ export default function MissingCatList() {
   if (!missingcats || !loadingTimePassed || isLoading) {
     return (
       <div className="loading">
-        <img src="client/images/catGif2.gif" alt="" />
+        <img src="../images/catGif2.gif" alt="" />
         <h1 className="loading-heading">Just a sec!</h1>
       </div>
     )
